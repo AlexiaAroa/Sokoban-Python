@@ -1,6 +1,6 @@
 # SOKOBAN
 
-Sokoban es un clásico puzzle realizado como proyecto final para la materia **Algoritmos y Programación I** en la Universidad de Buenos Aires.
+Sokoban es un clásico puzzle realizado como proyecto final para la materia **Algoritmos y Programación I** (Cátedra Essaya) de la Facultad de Ingeniería (UBA).
 
 Este juego está desarrollado en Python, utilizando la librería [Gamelib](https://dessaya.github.io/python-gamelib/ "Gamelib").
 
