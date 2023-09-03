@@ -22,7 +22,10 @@ def crear_grilla(desc):
            +  Objetivo + Jugador
     '''
     
-    return [list(fila) for fila in desc]
+    grilla = []
+    for fila in desc:
+        grilla.append(list(fila))
+    return grilla
 
 def dimensiones(grilla):
     '''Devuelve una tupla con la cantidad de columnas y filas de la grilla.'''
@@ -50,7 +53,7 @@ def juego_ganado(grilla):
     '''Devuelve True si el juego está ganado.'''
     for f in range(len(grilla)):
         for c in range(len(grilla[f])):
-            if hay_objetivo(grilla, c, f) and not hay_caja(grilla, c, f):
+            if grilla[f][c] == OBJETIVO or grilla[f][c] == CAJA:
                 return False
     return True
 
@@ -98,12 +101,13 @@ def actualizar_grilla(grilla, c, f, direccion):
 
 def duplicar_grilla(grilla):
     '''Realizo una copia de la grilla inicial'''
+    nueva_grilla = []
+    for fila in grilla:
+        nueva_grilla.append(fila.copy())
 
-    return [fila.copy() for fila in grilla]
+    return nueva_grilla
 
 def obtener_posicion_jugador(grilla):
-    '''Se obtiene la posición del jugador'''
-
     for f in range(len(grilla)):
         for c in range(len(grilla[f])):
             if hay_jugador(grilla, c, f):
