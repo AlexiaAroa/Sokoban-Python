@@ -1,10 +1,9 @@
 import soko
 import gamelib
+from constantes import OBJETIVO, PARED, JUGADOR, CAJA, GRILLA, MOVIMIENTOS_PISTAS
 
 GROUND = 'GROUND'
-SPRITES = { soko.OBJETIVO: 'img/goal.gif', soko.PARED: 'img/wall.gif', soko.JUGADOR: 'img/player.gif', soko.CAJA: 'img/box.gif', GROUND: 'img/ground.gif'}
-GRILLA = 0
-MOVIMIENTOS_PISTAS = 4
+SPRITES = { OBJETIVO: 'img/goal.gif', PARED: 'img/wall.gif', JUGADOR: 'img/player.gif', CAJA: 'img/box.gif', GROUND: 'img/ground.gif'}
 TAMANIO_CELDA = 32
 JUEGO_TITULO = 'Sokoban'
 
@@ -20,11 +19,11 @@ def obtener_sprites_de_casilla(grilla, c, f):
     if soko.hay_caja(grilla, c, f):
         sprites.append(soko.CAJA)
     if soko.hay_objetivo(grilla, c, f):
-        sprites.append(soko.OBJETIVO)
+        sprites.append(OBJETIVO)
     if soko.hay_jugador(grilla, c, f):
-        sprites.append(soko.JUGADOR)
+        sprites.append(JUGADOR)
     if soko.hay_pared(grilla, c, f):
-        sprites.append(soko.PARED)
+        sprites.append(PARED)
 
     return tuple(sprites)
 

@@ -2,17 +2,7 @@ from pila import Pila
 import backtracking
 import soko
 import interfaz
-
-GRILLA = 0
-NIVEL = 1
-MOVIMIENTOS_DESHACER = 2
-MOVIMIENTOS_REHACER = 3
-MOVIMIENTOS_PISTAS = 4
-
-SOLUCION_ENCONTRADA = 0
-SOLUCIONES = 1
-
-LEVEL_HEADER = 'Level'
+from constantes import *
 
 def obtener_grilla_nivel(juego, nivel):
     '''Devuelve la grilla y el nivel indicados.'''

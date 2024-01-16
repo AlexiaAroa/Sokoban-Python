@@ -3,8 +3,7 @@ import gamelib
 import archivos
 import interfaz
 import estado_de_juego as estado
-
-SALIR, REINICIAR, REHACER, DESHACER, PISTAS = 'SALIR', 'REINICIAR', 'REHACER', 'DESHACER', 'PISTAS'
+from constantes import *
 
 def main():
     # Inicializar el estado del juego
@@ -20,7 +19,7 @@ def main():
 
     estado_de_juego = estado.obtener_grilla_nivel(juego,  1)
     interfaz.mostrar_titulo()
-    interfaz.actualizar_tamanio_ventana(estado_de_juego[estado.GRILLA])
+    interfaz.actualizar_tamanio_ventana(estado_de_juego[GRILLA])
 
     while gamelib.is_alive():
         gamelib.draw_begin()
@@ -29,13 +28,13 @@ def main():
 
         gamelib.draw_end()
 
-        if soko.juego_ganado(estado_de_juego[estado.GRILLA]):
-            if estado_de_juego[estado.NIVEL] == ultimo_nivel:
+        if soko.juego_ganado(estado_de_juego[GRILLA]):
+            if estado_de_juego[NIVEL] == ultimo_nivel:
                 interfaz.mostrar_mensaje(interfaz.JUEGO_TERMINADO)
                 break
 
-            estado_de_juego = estado.obtener_grilla_nivel(juego, estado_de_juego[estado.NIVEL] + 1)
-            interfaz.actualizar_tamanio_ventana(estado_de_juego[estado.GRILLA])
+            estado_de_juego = estado.obtener_grilla_nivel(juego, estado_de_juego[NIVEL] + 1)
+            interfaz.actualizar_tamanio_ventana(estado_de_juego[GRILLA])
             continue
 
         ev = gamelib.wait(gamelib.EventType.KeyPress)
@@ -52,17 +51,17 @@ def main():
             break
             
         elif controles[tecla] == REINICIAR:
-            estado_de_juego = estado.obtener_grilla_nivel(juego, estado_de_juego[estado.NIVEL])
+            estado_de_juego = estado.obtener_grilla_nivel(juego, estado_de_juego[NIVEL])
 
         elif controles[tecla] == REHACER:
-            if not estado_de_juego[estado.MOVIMIENTOS_REHACER].esta_vacia():
-                estado.guardar_movimiento(estado_de_juego[estado.GRILLA], estado_de_juego[estado.MOVIMIENTOS_DESHACER])
-                estado_de_juego = estado.recuperar_movimiento_pila(estado_de_juego, estado.MOVIMIENTOS_REHACER)
+            if not estado_de_juego[MOVIMIENTOS_REHACER].esta_vacia():
+                estado.guardar_movimiento(estado_de_juego[GRILLA], estado_de_juego[MOVIMIENTOS_DESHACER])
+                estado_de_juego = estado.recuperar_movimiento_pila(estado_de_juego, MOVIMIENTOS_REHACER)
             
         elif controles[tecla] == DESHACER:
-            if not estado_de_juego[estado.MOVIMIENTOS_DESHACER].esta_vacia():
-                estado.guardar_movimiento(estado_de_juego[estado.GRILLA], estado_de_juego[estado.MOVIMIENTOS_REHACER])
-                estado_de_juego = estado.recuperar_movimiento_pila(estado_de_juego, estado.MOVIMIENTOS_DESHACER)
+            if not estado_de_juego[MOVIMIENTOS_DESHACER].esta_vacia():
+                estado.guardar_movimiento(estado_de_juego[GRILLA], estado_de_juego[MOVIMIENTOS_REHACER])
+                estado_de_juego = estado.recuperar_movimiento_pila(estado_de_juego, MOVIMIENTOS_DESHACER)
 
         elif controles[tecla] == PISTAS:
             estado_de_juego = estado.obtener_pistas(estado_de_juego)

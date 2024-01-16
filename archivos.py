@@ -1,14 +1,8 @@
 import soko
+from constantes import LEVEL_HEADER, DIRECCIONES
 
 ARCHIVO_NIVELES = 'texto/niveles.txt'
 ARCHIVO_TECLAS = 'texto/teclas.txt'
-LEVEL_HEADER = 'Level'
-
-OESTE = (-1, 0)
-ESTE = (1, 0)
-NORTE = (0, -1)
-SUR = (0, 1)
-DIRECCIONES = { 'OESTE': OESTE, 'ESTE': ESTE, 'NORTE': NORTE, 'SUR': SUR }
 
 def crear_grilla(desc):
     '''Crea una grilla a partir de la descripción del estado inicial.'''
@@ -38,7 +32,6 @@ def crear_juego():
         juego[nivel] = crear_grilla(desc)
     
     ultimo_nivel = int(nivel.split(' ')[1])
-
     return juego, ultimo_nivel
 
 def obtener_controles():

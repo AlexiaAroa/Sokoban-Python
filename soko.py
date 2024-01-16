@@ -1,10 +1,4 @@
-CAJA = '$'
-PARED = '#'
-VACIO = ' '
-JUGADOR = '@'
-OBJETIVO = '.'
-OBJETIVO_Y_CAJA = '*'
-OBJETIVO_Y_JUGADOR = '+'
+from constantes import CAJA, PARED, VACIO, JUGADOR, OBJETIVO, OBJETIVO_Y_CAJA, OBJETIVO_Y_JUGADOR
 
 def crear_grilla(desc):
     '''Crea una grilla a partir de la descripción del estado inicial.
@@ -98,7 +92,6 @@ def actualizar_grilla(grilla, c, f, direccion):
 
 def duplicar_grilla(grilla):
     '''Realizo una copia de la grilla inicial'''
-
     return [fila.copy() for fila in grilla]
 
 def obtener_posicion_jugador(grilla):
